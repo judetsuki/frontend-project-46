@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "fs": "^0.0.1-security"
   },
   "name": "@hexlet/code",
   "description": "[![Actions Status](https://github.com/luka0204/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/luka0204/frontend-project-46/actions)",
   "version": "1.0.0",
   "main": "gendiff.js",
-  "devDependencies": {},
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
