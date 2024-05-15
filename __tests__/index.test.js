@@ -3,6 +3,11 @@ import * as func from '../index.js';
 import genDiff from '../index.js';
 
 describe('genDiff', () => {
+  it('should be undefined', () => {
+    expect(func.genDiff).toBeUndefined();
+  });
+})
+describe('genDiff', () => {
   test('should return correct diff for two objects', () => {
     const data1 = {
       follow: false,
