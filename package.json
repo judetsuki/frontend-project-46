@@ -4,6 +4,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "fs": "^0.0.1-security",
     "jest": "^29.7.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "name": "@hexlet/code",
@@ -12,8 +13,7 @@
   "main": "gendiff.js",
   "type": "module",
   "scripts": {
-    "test":"jest --colors" 
-
+    "test": "jest --colors"
   },
   "author": "luka0204",
   "license": "ISC",

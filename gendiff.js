@@ -1,7 +1,6 @@
 import { Command } from 'commander';
 const program = new Command();
-import { readFileSync } from 'node:fs';
-import genDiff from './index.js';
+import parse from './parsers.js';
 
 program
   .name('gendiff')
@@ -11,11 +10,5 @@ program
   .usage("[options] <filepath1> <filepath2>")
   .argument('<filepath1>')
   .argument('<filepath2>')
-.action((filepath1,filepath2, format = 'utf-8') => {
-const result1 = readFileSync(filepath1, format);
-const result2 = readFileSync(filepath2, format);
-
-
-console.log(genDiff(JSON.parse(result1), JSON.parse(result2)));
-});
+  .action(parse);
 program.parse();
