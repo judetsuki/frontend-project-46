@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const buildDiff = (obj1, obj2, depth = 1) => {
+const makeStylishDiff = (obj1, obj2, depth = 1) => {
     const keys = _.union(Object.keys(obj1), Object.keys(obj2)).sort();
     
     const diffLines = keys.map((key) => {
@@ -12,7 +12,7 @@ const buildDiff = (obj1, obj2, depth = 1) => {
             return `${currentDepth}- ${key}: ${formatValue(obj1[key], depth)}`;
         }
         if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
-            return `${currentDepth}  ${key}: ${buildDiff(obj1[key], obj2[key], depth + 1)}`;
+            return `${currentDepth}  ${key}: ${makeStylishDiff(obj1[key], obj2[key], depth + 1)}`;
         }
         if (obj1[key] === obj2[key]) {
             return `${currentDepth}  ${key}: ${formatValue(obj1[key], depth)}`;
@@ -25,9 +25,22 @@ const buildDiff = (obj1, obj2, depth = 1) => {
 
 const formatValue = (value, depth) => {
     if (_.isObject(value)) {
-        return buildDiff(value, value, depth + 2);
+        return makeStylishDiff(value, value, depth + 2);
     }
     return value;
 };
 
-export default buildDiff;
+const formatter = (data1,data2,format) => {
+        switch (format) {
+          case 'stylish':
+            return makeStylishDiff(data1,data2);
+          case 'plain':
+            return makePlainDiff(data1,data2);
+          case 'json':
+            return JSON.stringify(tree);
+          default:
+            throw new Error('invalid data');
+        }
+};
+
+export default formatter;

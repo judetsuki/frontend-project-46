@@ -1,9 +1,9 @@
 import path from 'node:path';
 import parser from './parsers.js';
-import buildDiff from './formatter.js';
+import formatter from './formatter.js';
 import { readFileSync } from 'node:fs';
 
- const genDiff = (data1, data2) => {
+ const genDiff = (data1, data2, format = 'stylish') => {
 
     const resolvePath = (filepath) => path.resolve(process.cwd(), filepath);
     const getExtension = (filename) => path.extname(filename).slice(1);
@@ -20,7 +20,7 @@ import { readFileSync } from 'node:fs';
   const datan2 = getData(path2);
 
 
-  return buildDiff(datan1, datan2);
+  return formatter(datan1,datan2,format);
 };
 
 
