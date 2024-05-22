@@ -10,10 +10,13 @@
   "name": "@hexlet/code",
   "description": "[![Actions Status](https://github.com/luka0204/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/luka0204/frontend-project-46/actions)",
   "version": "1.0.0",
-  "main": "gendiff.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --colors"
+    "test": "jest"
+  },
+  "bin":{
+    "gendiff": "gendiff.js"
   },
   "author": "luka0204",
   "license": "ISC",

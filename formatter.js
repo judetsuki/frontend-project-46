@@ -1,3 +1,4 @@
+
 import _ from 'lodash';
 
 const makeStylishDiff = (obj1, obj2, depth = 1) => {
@@ -25,7 +26,7 @@ const makeStylishDiff = (obj1, obj2, depth = 1) => {
 
 const formatValue = (value, depth) => {
     if (_.isObject(value)) {
-        return makeStylishDiff(value, value, depth + 2);
+        return makeStylishDiff(value, value, depth + 1);
     }
     return value;
 };

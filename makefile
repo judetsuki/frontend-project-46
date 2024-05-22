@@ -22,3 +22,6 @@ lint-fix:
 publish:
 	npm publish --dry-run
 
+gendiff:
+	node/gendiff.js
+
