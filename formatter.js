@@ -6,16 +6,16 @@ const makeStylishDiff = (obj1, obj2, depth = 1) => {
     const diffLines = keys.map((key) => {
         const currentDepth = '  '.repeat(depth);
         if (!_.has(obj1, key)) {
-            return `${currentDepth}+ ${key}: ${formatValue(obj2[key], depth)}`;
+            return `${currentDepth}+ ${key}: ${formatValue(obj2[key], depth + 1)}`;
         }
         if (!_.has(obj2, key)) {
-            return `${currentDepth}- ${key}: ${formatValue(obj1[key], depth)}`;
+            return `${currentDepth}- ${key}: ${formatValue(obj1[key], depth + 1)}`;
         }
         if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
-            return `${currentDepth}  ${key}: ${makeStylishDiff(obj1[key], obj2[key], depth + 1)}`;
+            return `${currentDepth}  ${key}: ${makeStylishDiff(obj1[key], obj2[key], depth + 2)}`;
         }
         if (obj1[key] === obj2[key]) {
-            return `${currentDepth}  ${key}: ${formatValue(obj1[key], depth)}`;
+            return `${currentDepth}  ${key}: ${formatValue(obj1[key], depth + 2)}`;
         }
         return `${currentDepth}- ${key}: ${formatValue(obj1[key], depth)}\n${currentDepth}+ ${key}: ${formatValue(obj2[key], depth)}`;
     });
@@ -31,7 +31,7 @@ const formatValue = (value, depth) => {
 };
 
 const makePlainDiff = (obj1, obj2) => {
-    const diffOutput = [];
+    let diffOutput = '';
 
     const formatValue = (value) => {
         if (_.isObject(value)) {
@@ -40,31 +40,32 @@ const makePlainDiff = (obj1, obj2) => {
         return `"${value}"`;
     };
 
-    Object.keys(obj1).forEach((key) => {
-        if (!obj2.hasOwnProperty(key)) {
-            diffOutput.push(`Property '${key}' was removed`);
-        } else if (_.isEqual(obj1[key], obj2[key])) {
-            // Property exists in both objects and their values are equal
-            // No action needed
-        } else if (_.isPlainObject(obj1[key]) && _.isPlainObject(obj2[key])) {
-            const nestedDiffOutput = makePlainDiff(obj1[key], obj2[key]);
-            if (nestedDiffOutput.length > 0) {
-                nestedDiffOutput.forEach((line) => {
-                    diffOutput.push(`Property '${key}.${line.split("'")[1]}' ${line.split("'")[2]}`);
-                });
+    const traverseObject = (obj1, obj2, prefix = '') => {
+        Object.keys(obj1).forEach((key) => {
+            const fullKey = prefix ? `${prefix}.${key}` : key;
+            if (!obj2.hasOwnProperty(key)) {
+                diffOutput += `Property '${fullKey}' was removed\n`;
+            } else if (_.isEqual(obj1[key], obj2[key])) {
+                // Property exists in both objects and their values are equal
+                // No action needed
+            } else if (_.isPlainObject(obj1[key]) && _.isPlainObject(obj2[key])) {
+                traverseObject(obj1[key], obj2[key], fullKey);
+            } else {
+                diffOutput += `Property '${fullKey}' was updated. From ${formatValue(obj1[key])} to ${formatValue(obj2[key])}\n`;
             }
-        } else {
-            diffOutput.push(`Property '${key}'was updated. From ${formatValue(obj1[key])} to ${formatValue(obj2[key])}`);
-        }
-    });
+        });
 
-    Object.keys(obj2).forEach((key) => {
-        if (!obj1.hasOwnProperty(key)) {
-            diffOutput.push(`Property '${key}' was added with value: ${formatValue(obj2[key])}`);
-        }
-    });
+        Object.keys(obj2).forEach((key) => {
+            if (!obj1.hasOwnProperty(key)) {
+                const fullKey = prefix ? `${prefix}.${key}` : key;
+                diffOutput += `Property '${fullKey}' was added with value: ${formatValue(obj2[key])}\n`;
+            }
+        });
+    };
 
-    return diffOutput;
+    traverseObject(obj1, obj2);
+
+    return diffOutput.trim();
 };
 
 const formatter = (data1,data2,format) => {
