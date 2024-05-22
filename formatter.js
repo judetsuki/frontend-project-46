@@ -75,7 +75,7 @@ const formatter = (data1,data2,format) => {
           case 'plain':
             return makePlainDiff(data1,data2);
           case 'json':
-            return JSON.stringify(tree);
+            return JSON.stringify(data1,data2);
           default:
             throw new Error('invalid data');
         }
