@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 
  const genDiff = (data1, data2, format = 'stylish') => {
 
-    const resolvePath = (filepath) => path.resolve(process.cwd(), filepath);
+    const resolvePath = (filepath) => path.resolve(filepath);
     const getExtension = (filename) => path.extname(filename).slice(1);
 
   const getData = (filePath) => parser({

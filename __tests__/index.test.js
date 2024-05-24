@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it, test } from '@jest/globals';
 import formatter from '../formatter.js';
 import * as func from '../formatter.js';
 import * as example from '../__fixtures__/results.js';

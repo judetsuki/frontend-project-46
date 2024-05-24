@@ -1,5 +1,3 @@
-import { readFileSync } from 'node:fs';
-import genDiff from './index.js';
 import yaml from 'js-yaml';
 
   const parse = {
