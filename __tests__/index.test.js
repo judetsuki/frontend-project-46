@@ -1,9 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
-import * as func from '../index.js';
-import genDiff from '../index.js';
+import formatter from '../formatter.js';
+import * as func from '../formatter.js';
+
  describe('genDiff', () => {
    it('should be undefined', () => {
-     expect(func.genDiff).toBeUndefined();
+     expect(func.formatter).toBeUndefined();
    });
  })
 
@@ -69,52 +70,52 @@ import genDiff from '../index.js';
           }
          };
  
-  const expectedDiffOutput = `{
+  const expectedDiffOutput = `{{
     common: {
-    + follow: false
-      setting1: Value 1
-    - setting2: 200
-    - setting3: true
-    + setting3: null
-    + setting4: blah blah
-    + setting5: {
-          key5: value5
-      }
-      setting6: {
-        doge: {
-        - wow: 
-        + wow: so much
-      }
-        key: value
-      + ops: vops
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
     }
-  }
     group1: {
-    - baz: bas
-    + baz: bars
-      foo: bar
-    - nest: {
-          key: value
-      }
-    + nest: str
-  }
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
   - group2: {
         abc: 12345
         deep: {
-          id: 45
-      }
+            id: 45
+        }
     }
   + group3: {
         deep: {
-          id: {
-            number: 45
+            id: {
+                number: 45
+            }
         }
-      }
         fee: 100500
     }
-}`
+}}`
 ;
  
-         expect(genDiff(obj1, obj2)).toEqual(expectedDiffOutput);
+         expect(formatter(obj1, obj2, 'stylish')).toEqual(expectedDiffOutput);
      });
  });
