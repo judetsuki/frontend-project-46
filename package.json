@@ -15,7 +15,7 @@
   "scripts": {
     "test": "jest"
   },
-  "bin":{
+  "bin": {
     "gendiff": "gendiff.js"
   },
   "author": "luka0204",
