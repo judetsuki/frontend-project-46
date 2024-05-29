@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "@jest/globals": "^29.7.0",
     "commander": "^12.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "fs": "^0.0.1-security",
     "jest": "^29.7.0",
     "js-yaml": "^4.1.0",
@@ -18,7 +21,5 @@
     "gendiff": "gendiff.js"
   },
   "author": "luka0204",
-  "license": "ISC",
-  "devDependencies": {
-  }
+  "license": "ISC"
 }
