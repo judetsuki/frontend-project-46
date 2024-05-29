@@ -1,12 +1,11 @@
 import path from 'node:path';
+import { readFileSync } from 'node:fs';
 import parser from './parsers.js';
 import formatter from './formatter.js';
-import { readFileSync } from 'node:fs';
 
- const genDiff = (data1, data2, format = 'stylish') => {
-
-    const resolvePath = (filepath) => path.resolve(filepath);
-    const getExtension = (filename) => path.extname(filename).slice(1);
+const genDiff = (data1, data2, format = 'stylish') => {
+  const resolvePath = (filepath) => path.resolve(filepath);
+  const getExtension = (filename) => path.extname(filename).slice(1);
 
   const getData = (filePath) => parser({
     data: readFileSync(filePath, 'utf-8'),
@@ -19,11 +18,7 @@ import { readFileSync } from 'node:fs';
   const datan1 = getData(path1);
   const datan2 = getData(path2);
 
-
-  return formatter(datan1,datan2,format);
+  return formatter(datan1, datan2, format);
 };
 
-
-
-  export default genDiff;
-
+export default genDiff;
