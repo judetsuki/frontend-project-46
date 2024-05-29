@@ -1,4 +1,3 @@
-
 import _ from 'lodash';
 
 const makeStylishDiff = (obj1, obj2, depth = 1) => {
