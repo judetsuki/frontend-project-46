@@ -1,6 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-shadow */
 
 import _ from 'lodash';
 
