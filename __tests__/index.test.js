@@ -1,8 +1,8 @@
 import {
   describe, expect, it, test,
 } from '@jest/globals';
-import formatter from '../formatter.js';
-import * as func from '../formatter.js';
+import formatter from '../src/formatter.js';
+import * as func from '../src/formatter.js';
 import * as example from '../__fixtures__/results.js';
 
 describe('genDiff1', () => {
