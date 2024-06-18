@@ -27,11 +27,13 @@ node bin/gendiff -h
 **stylish**
 пример работы:
 
+
 ![image](https://github.com/luka0204/frontend-project-46/assets/146336891/69377dff-3adf-43e9-a2f0-a3a532f56e6c)
 
 
 **plain**
 пример работы:
+
 
 ![image](https://github.com/luka0204/frontend-project-46/assets/146336891/7d6f1664-6724-4506-ac4f-9dff727795df)
 
@@ -39,7 +41,9 @@ node bin/gendiff -h
 **JSON**
 пример работы:
 
-![image](https://github.com/luka0204/frontend-project-46/assets/146336891/21569d3b-dff8-432e-b0b5-3f18a14dee43)
+
+![image](https://github.com/luka0204/frontend-project-46/assets/146336891/fa7b01fc-6d30-4d6c-aa5d-63a24ec84af7)
+
 
 
 
