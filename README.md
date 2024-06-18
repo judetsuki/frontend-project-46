@@ -25,10 +25,21 @@ node bin/gendiff -h
 доступные форматы:
 
 **stylish**
+пример работы:
+
+![image](https://github.com/luka0204/frontend-project-46/assets/146336891/69377dff-3adf-43e9-a2f0-a3a532f56e6c)
+
 
 **plain**
+пример работы:
+
+![image](https://github.com/luka0204/frontend-project-46/assets/146336891/7d6f1664-6724-4506-ac4f-9dff727795df)
+
 
 **JSON**
+пример работы:
+
+![image](https://github.com/luka0204/frontend-project-46/assets/146336891/21569d3b-dff8-432e-b0b5-3f18a14dee43)
 
 
 
@@ -41,3 +52,4 @@ node bin/gendiff -h
 
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/596598c075db12e4151e/test_coverage)](https://codeclimate.com/github/luka0204/frontend-project-46/test_coverage)
+
