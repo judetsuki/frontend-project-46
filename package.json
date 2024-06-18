@@ -18,7 +18,7 @@
     "test": "jest"
   },
   "bin": {
-    "gendiff": "gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
   "author": "luka0204",
   "license": "ISC"
